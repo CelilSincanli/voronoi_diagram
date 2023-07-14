@@ -7,6 +7,16 @@
 #IncludeRegexTransform: 
 
 /home/celil/workspace/voronoi_diagram/src/main.cpp
+iostream
+-
 SFML/Graphics.hpp
+-
+SFML/System.hpp
+-
+SFML/Audio.hpp
+-
+SFML/Window.hpp
+-
+SFML/Network.hpp
 -
 

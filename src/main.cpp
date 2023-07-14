@@ -1,8 +1,14 @@
+#include <iostream>
+
 #include <SFML/Graphics.hpp>
+#include <SFML/System.hpp>
+#include <SFML/Audio.hpp>
+#include <SFML/Window.hpp>
+#include <SFML/Network.hpp>
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(800, 600), "SFML Project");
+    sf::RenderWindow window(sf::VideoMode(640, 480), "Voronoi Diagram", sf::Style::Titlebar | sf::Style::Close);
     
     while (window.isOpen())
     {

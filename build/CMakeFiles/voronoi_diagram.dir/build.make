@@ -81,6 +81,7 @@ voronoi_diagram: CMakeFiles/voronoi_diagram.dir/src/main.cpp.o
 voronoi_diagram: CMakeFiles/voronoi_diagram.dir/build.make
 voronoi_diagram: /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.5.1
 voronoi_diagram: /usr/lib/x86_64-linux-gnu/libsfml-audio.so.2.5.1
+voronoi_diagram: /usr/lib/x86_64-linux-gnu/libsfml-network.so.2.5.1
 voronoi_diagram: /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1
 voronoi_diagram: /usr/lib/x86_64-linux-gnu/libsfml-system.so.2.5.1
 voronoi_diagram: CMakeFiles/voronoi_diagram.dir/link.txt
