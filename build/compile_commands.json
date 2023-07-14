@@ -1,0 +1,7 @@
+[
+{
+  "directory": "/home/celil/workspace/voronoi_diagram/build",
+  "command": "/usr/bin/g++   -I/home/celil/workspace/voronoi_diagram/include -I/home/celil/workspace/voronoi_diagram/lib  -g   -std=gnu++11 -o CMakeFiles/voronoi_diagram.dir/src/main.cpp.o -c /home/celil/workspace/voronoi_diagram/src/main.cpp",
+  "file": "/home/celil/workspace/voronoi_diagram/src/main.cpp"
+}
+]
