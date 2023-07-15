@@ -3,7 +3,7 @@ set(PROJECT_NAME voronoi_diagram)
 project(${PROJECT_NAME} VERSION 1.0.0 LANGUAGES CXX)
 
 # Add your project's source files
-file(GLOB source_files "src/main.cpp")
+file(GLOB source_files "src/*.cpp")
 
 set(SOURCES ${source_files})
 set(CMAKE_CXX_STANDARD 11)

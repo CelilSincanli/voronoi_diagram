@@ -1,28 +1,20 @@
 #include <iostream>
-
-#include <SFML/Graphics.hpp>
-#include <SFML/System.hpp>
-#include <SFML/Audio.hpp>
-#include <SFML/Window.hpp>
-#include <SFML/Network.hpp>
+#include "voronoi.hpp"
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(640, 480), "Voronoi Diagram", sf::Style::Titlebar | sf::Style::Close);
+    //init visualization
+    Voronoi voronoi;
     
-    while (window.isOpen())
+    while (voronoi.is_window_open())
     {
-        sf::Event event;
-        while (window.pollEvent(event))
-        {
-            if (event.type == sf::Event::Closed)
-                window.close();
-        }
+        //Update
+        voronoi.update();
         
-        window.clear();
-        // Add your SFML drawing and logic code here
+        //Render
+        voronoi.render();
         
-        window.display();
+
     }
     
     return 0;
