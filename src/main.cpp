@@ -1,4 +1,3 @@
-#include <iostream>
 #include "voronoi.hpp"
 
 int main()

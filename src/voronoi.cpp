@@ -7,6 +7,7 @@ Voronoi::Voronoi(/* args */)
 {
     this->init_variables();
     this->init_window();
+    this->init_points();
 }
 
 // Deconstructor
@@ -39,10 +40,11 @@ void Voronoi::render()
         Renders the voronoi diagram
     */
    
-    this->window->clear(sf::Color(255, 0, 0, 255));
+    this->window->clear();
 
     // Draw diagram 
-
+    this->window->draw(this->points);
+    
     this->window->display();
 }
 
@@ -54,10 +56,21 @@ void Voronoi::init_variables()
 void Voronoi::init_window()
 {
     this->video_mode.height = 640;
-    this->video_mode.width = 480;
+    this->video_mode.width = 800;
 
     this->window = new sf::RenderWindow(this->video_mode, "Voronoi Diagram", sf::Style::Titlebar | sf::Style::Close);
-} 
+
+    this->window->setFramerateLimit(80);
+}
+
+void Voronoi::init_points()
+{
+    this->points.setPosition(10.f, 10.f);
+    this->points.setRadius(3.f);
+    this->points.setFillColor(sf::Color::Cyan);
+    this->points.setOutlineColor(sf::Color::Green);
+    this->points.setOutlineThickness(2.f);
+}
 
 void Voronoi::poll_events()
 {

@@ -1,6 +1,8 @@
 #ifndef VORONOI_H
 #define VORONOI_H
 
+#include <iostream>
+
 #include <SFML/Graphics.hpp>
 #include <SFML/System.hpp>
 #include <SFML/Audio.hpp>
@@ -19,8 +21,11 @@ private:
     sf::VideoMode video_mode;
     sf::Event ev;
 
+    // Voronoi Diagram points
+    sf::CircleShape points;
     void init_variables();
     void init_window();
+    void init_points();
     
 public:
     //Constructors / Destructors
