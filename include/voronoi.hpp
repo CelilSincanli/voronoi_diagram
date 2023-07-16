@@ -2,6 +2,8 @@
 #define VORONOI_H
 
 #include <iostream>
+#include <vector>
+#include <ctime>
 
 #include <SFML/Graphics.hpp>
 #include <SFML/System.hpp>
@@ -21,11 +23,24 @@ private:
     sf::VideoMode video_mode;
     sf::Event ev;
 
+    //Mouse positions
+    sf::Vector2i mouse_position_window;
+
+    // logic
+    int point_counter;
+    float point_spawn_timer;
+    float point_spawn_timer_max;
+    int max_points;
+
     // Voronoi Diagram points
-    sf::CircleShape points;
+    std::vector<sf::CircleShape> points;
+    sf::CircleShape point;
+
+    //Private functions
     void init_variables();
     void init_window();
     void init_points();
+    
     
 public:
     //Constructors / Destructors
@@ -36,9 +51,17 @@ public:
     const bool is_window_open() const;
     
     //Fucntions
+    void spawn_points();
+
     void poll_events();
+    void update_mouse_positions();
+    void update_points();
     void update();
+    
+    void render_points();
     void render();
+
+    
 
 };
 
