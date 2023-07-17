@@ -66,21 +66,25 @@ void Voronoi::init_variables(const std::size_t points_size)
 
 void Voronoi::init_window()
 {
+    
     this->video_mode.height = 640;
     this->video_mode.width = 800;
 
     this->window = new sf::RenderWindow(this->video_mode, "Voronoi Diagram", sf::Style::Titlebar | sf::Style::Close);
-
-    this->window->setFramerateLimit(80);
+    
+    this->icon.loadFromFile("/home/celil/Pictures/voronoi_2.png");
+    this->window->setIcon(128, 128, this->icon.getPixelsPtr());
+    
+    this->window->setFramerateLimit(60);
 }
 
 void Voronoi::init_points()
 {
     this->point.setPosition(0.f, 0.f);
-    this->point.setRadius(3.f);
+    this->point.setRadius(2.f);
     this->point.setFillColor(sf::Color::Cyan);
     this->point.setOutlineColor(sf::Color::Green);
-    this->point.setOutlineThickness(2.f);
+    this->point.setOutlineThickness(1.f);
 
 
 }
@@ -96,15 +100,24 @@ void Voronoi::spawn_points()
         -Adds enemy to the vector.
     */
 
-   this->point.setPosition(
-        static_cast<float>(rand() % static_cast<int>(this->window->getSize().x - this->point.getRadius())),
-        static_cast<float>(rand() % static_cast<int>(this->window->getSize().y - this->point.getRadius()))
-   );
-
-    this->point.setFillColor(sf::Color::Green);
-
     //Spawn the point
-    this->points.push_back(this->point);
+    for (size_t i = 0; i < this->max_points; i++)
+    {
+        this->point.setPosition(
+            static_cast<float>(rand() % static_cast<int>(this->window->getSize().x - this->point.getRadius())),
+            static_cast<float>(rand() % static_cast<int>(this->window->getSize().y - this->point.getRadius()))
+        );
+
+        std::cout <<  "getPosition_x: " << this->point.getPosition().x << " windowPosition_x: " << static_cast<int>(this->window->getSize().x) << std::endl;
+        std::cout << "getPosition_y: " << this->point.getPosition().y << " windowPosition_y: " << static_cast<int>(this->window->getSize().y) << std::endl;
+        std::cout << "---------------------"<< std::endl;
+        this->point.setFillColor(sf::Color::Green);
+
+        this->points.push_back(this->point);
+
+    }
+    
+    // this->points.push_back(this->point);
 }
 
 void Voronoi::poll_events()
@@ -167,18 +180,21 @@ void Voronoi::update_points()
     
 
     //Move the points
-    for (auto &e : this->points)
-    {
-        e.move(0.f, 1.f);
-    }
+    // for (auto &e : this->points)
+    // {
+    //     e.move(0.f, 1.f);
+    // }
     
 }
 
 void Voronoi::render_points()
 {
     //Rendering all the points
+    
     for (auto &e : this->points)
     {
+
         this->window->draw(e);
+
     }
 }
