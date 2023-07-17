@@ -37,14 +37,14 @@ private:
     sf::CircleShape point;
 
     //Private functions
-    void init_variables();
+    void init_variables(const std::size_t points_size);
     void init_window();
     void init_points();
     
     
 public:
     //Constructors / Destructors
-    Voronoi(/* args */);
+    Voronoi(const std::size_t points_size);
     ~Voronoi();
 
     //Accessors

@@ -3,9 +3,9 @@
 
 
 // Constructor
-Voronoi::Voronoi(/* args */)
+Voronoi::Voronoi(const std::size_t points_size)
 {
-    this->init_variables();
+    this->init_variables(points_size);
     this->init_window();
     this->init_points();
 }
@@ -52,7 +52,7 @@ void Voronoi::render()
     this->window->display();
 }
 
-void Voronoi::init_variables()
+void Voronoi::init_variables(const std::size_t points_size)
 {
     this->window = nullptr;
 
@@ -60,7 +60,7 @@ void Voronoi::init_variables()
     this->point_counter = 0;
     this->point_spawn_timer_max = 1000.f;
     this->point_spawn_timer = this->point_spawn_timer_max;
-    this->max_points = 5;
+    this->max_points = static_cast<int>(points_size);
 
 }
 
@@ -167,10 +167,10 @@ void Voronoi::update_points()
     
 
     //Move the points
-    // for (auto &e : this->points)
-    // {
-    //     e.move(0.f, 1.f);
-    // }
+    for (auto &e : this->points)
+    {
+        e.move(0.f, 1.f);
+    }
     
 }
 
