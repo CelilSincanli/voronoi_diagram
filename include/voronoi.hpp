@@ -22,6 +22,7 @@ private:
     sf::RenderWindow* window;
     sf::VideoMode video_mode;
     sf::Event ev;
+    sf::Image icon;
 
     //Mouse positions
     sf::Vector2i mouse_position_window;
