@@ -11,6 +11,7 @@
 #include <SFML/Window.hpp>
 #include <SFML/Network.hpp>
 
+// #include "fortune_algorithm.hpp"
 /*
 
     Class that acts as the voronoi diagram 	rendering
@@ -18,7 +19,15 @@
 class Voronoi
 {
 private:
-    
+    struct cartesian_coordinates {
+        float x, y;
+        // cartesian_coordinates(float a, float b) { this->x = a; this->y = b; }
+    };
+
+    cartesian_coordinates voronoi_point;
+    std::vector<cartesian_coordinates> voronoi_point_vec;
+
+    //Window
     sf::RenderWindow* window;
     sf::VideoMode video_mode;
     sf::Event ev;
@@ -42,7 +51,6 @@ private:
     void init_window();
     void init_points();
     
-    
 public:
     //Constructors / Destructors
     Voronoi(const std::size_t points_size);
@@ -51,7 +59,7 @@ public:
     //Accessors
     const bool is_window_open() const;
     
-    //Fucntions
+    //Functions
     void spawn_points();
 
     void poll_events();

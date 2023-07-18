@@ -108,13 +108,18 @@ void Voronoi::spawn_points()
             static_cast<float>(rand() % static_cast<int>(this->window->getSize().y - this->point.getRadius()))
         );
 
-        std::cout <<  "getPosition_x: " << this->point.getPosition().x << " windowPosition_x: " << static_cast<int>(this->window->getSize().x) << std::endl;
-        std::cout << "getPosition_y: " << this->point.getPosition().y << " windowPosition_y: " << static_cast<int>(this->window->getSize().y) << std::endl;
-        std::cout << "---------------------"<< std::endl;
+        // std::cout <<  "getPosition_x: " << this->point.getPosition().x << " windowPosition_x: " << static_cast<int>(this->window->getSize().x) << std::endl;
+        // std::cout << "getPosition_y: " << this->point.getPosition().y << " windowPosition_y: " << static_cast<int>(this->window->getSize().y) << std::endl;
+        // std::cout << "---------------------"<< std::endl;
+
         this->point.setFillColor(sf::Color::Green);
 
         this->points.push_back(this->point);
 
+        this->voronoi_point.x = this->point.getPosition().x;
+        this->voronoi_point.y = this->point.getPosition().y;
+
+        this->voronoi_point_vec.push_back(this->voronoi_point);
     }
     
     // this->points.push_back(this->point);
