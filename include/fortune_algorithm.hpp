@@ -2,16 +2,23 @@
 #define FORTUNE_ALGORITM_H
 
 #include <iostream>
+#include <vector>
 #include "voronoi.hpp"
 
-class Fortune_algorithm : private Voronoi
+class FortuneAlgorithm
 {
 private:
 
+    Voronoi mDiagram;
+
 
 public:
-    Fortune_algorithm(/* args */);
-    ~Fortune_algorithm();  
+
+    Voronoi getDiagram();
+    FortuneAlgorithm(std::vector<Voronoi::cartesian_coordinates> points);
+    ~FortuneAlgorithm();  
+
+    void initialize();
 
 };
 

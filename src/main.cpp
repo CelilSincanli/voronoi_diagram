@@ -1,4 +1,4 @@
-#include "voronoi.hpp"
+#include "diagram.hpp"
 
 int main()
 {
@@ -8,15 +8,15 @@ int main()
     std::size_t number_of_points = 100;
 
     //init visualization
-    Voronoi voronoi(number_of_points);
+    Diagram voronoi_diagram(number_of_points);
     
-    while (voronoi.is_window_open())
+    while (voronoi_diagram.is_window_open())
     {
         //Update
-        voronoi.update();
+        voronoi_diagram.update();
         
         //Render
-        voronoi.render();
+        voronoi_diagram.render();
         
 
     }

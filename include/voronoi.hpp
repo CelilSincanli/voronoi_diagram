@@ -3,74 +3,75 @@
 
 #include <iostream>
 #include <vector>
-#include <ctime>
+#include <list>
 
-#include <SFML/Graphics.hpp>
-#include <SFML/System.hpp>
-#include <SFML/Audio.hpp>
-#include <SFML/Window.hpp>
-#include <SFML/Network.hpp>
-
-// #include "fortune_algorithm.hpp"
-/*
-
-    Class that acts as the voronoi diagram 	rendering
-*/
 class Voronoi
 {
-private:
-    struct cartesian_coordinates {
-        float x, y;
-        // cartesian_coordinates(float a, float b) { this->x = a; this->y = b; }
+public:
+
+    struct cartesian_coordinates
+    {
+        double x;
+        double y;
+        cartesian_coordinates(double a, double b) { this->x = a; this->y = b; }
     };
 
-    cartesian_coordinates voronoi_point;
-    std::vector<cartesian_coordinates> voronoi_point_vec;
+    struct HalfEdge;
+    struct Face;
 
-    //Window
-    sf::RenderWindow* window;
-    sf::VideoMode video_mode;
-    sf::Event ev;
-    sf::Image icon;
+    struct Site
+    {
+        std::size_t index;
+        cartesian_coordinates point;
+        Face* face;
+    };
 
-    //Mouse positions
-    sf::Vector2i mouse_position_window;
+    struct Vertex
+    {
+        cartesian_coordinates point;
 
-    // logic
-    int point_counter;
-    float point_spawn_timer;
-    float point_spawn_timer_max;
-    int max_points;
+    private:
+        friend Voronoi;
+        std::list<Vertex>::iterator it;
+    };
 
-    // Voronoi Diagram points
-    std::vector<sf::CircleShape> points;
-    sf::CircleShape point;
+    struct HalfEdge
+    {
+        Vertex* origin = nullptr;
+        Vertex* destination = nullptr;
+        HalfEdge* twin = nullptr;
+        Face* incidentFace;
+        HalfEdge* prev = nullptr;
+        HalfEdge* next = nullptr;
 
-    //Private functions
-    void init_variables(const std::size_t points_size);
-    void init_window();
-    void init_points();
-    
-public:
-    //Constructors / Destructors
-    Voronoi(const std::size_t points_size);
+    private:
+        friend Voronoi;
+        std::list<HalfEdge>::iterator it;
+    };
+
+    struct Face
+    {
+        Site* site;
+        HalfEdge* outerComponent;
+    };
+
+
+    Site* getSite(std::size_t index);
+    std::size_t getNbSites() const;    
+    Face* getFace(std::size_t index);
+    const std::list<Voronoi::Vertex>& getVertices() const;
+    const std::list<Voronoi::HalfEdge>& getHalfEdges() const;
+
+    Voronoi(const std::vector<cartesian_coordinates>& points);
     ~Voronoi();
 
-    //Accessors
-    const bool is_window_open() const;
+private:
     
-    //Functions
-    void spawn_points();
+    std::vector<Site> mSites;
+    std::vector<Face> mFaces;
+    std::list<Vertex> mVertices;
+    std::list<HalfEdge> mHalfEdges;
 
-    void poll_events();
-    void update_mouse_positions();
-    void update_points();
-    void update();
-    
-    void render_points();
-    void render();
-
-    
 
 };
 

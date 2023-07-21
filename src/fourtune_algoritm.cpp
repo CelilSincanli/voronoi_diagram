@@ -1,11 +1,16 @@
 #include "fortune_algorithm.hpp"
 
-Fortune_algorithm::Fortune_algorithm(/* args */)
+FortuneAlgorithm::FortuneAlgorithm(std::vector<Voronoi::cartesian_coordinates> points) : mDiagram(std::move(points))
 {
-    
+
 }
 
-Fortune_algorithm::~Fortune_algorithm()
+FortuneAlgorithm::~FortuneAlgorithm() = default;
+
+void FortuneAlgorithm::initialize()
 {
-    
+    // Initialize event queue
+    for (std::size_t i = 0; i < mDiagram.getNbSites(); ++i)
+        mEvents.push(std::make_unique<Event>(mDiagram.getSite(i)));
+
 }
