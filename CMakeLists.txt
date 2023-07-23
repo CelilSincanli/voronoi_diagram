@@ -1,6 +1,8 @@
-cmake_minimum_required(VERSION 3.0)
+cmake_minimum_required(VERSION 3.14.0)
 set(PROJECT_NAME voronoi_diagram)
 project(${PROJECT_NAME} VERSION 1.0.0 LANGUAGES CXX)
+
+set(CMAKE_CXX_STANDARD 14)
 
 # Add your project's source files
 file(GLOB source_files "src/*.cpp")
@@ -15,3 +17,5 @@ find_package(SFML 2 REQUIRED COMPONENTS audio graphics window system network)
 add_executable(${PROJECT_NAME} ${SOURCES})
 target_include_directories(${PROJECT_NAME} PRIVATE "include" "lib")
 target_link_libraries(${PROJECT_NAME} sfml-system sfml-window sfml-graphics sfml-audio sfml-network)
+
+target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_14)  # Set the C++ standard for the target

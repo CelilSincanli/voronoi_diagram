@@ -4,6 +4,7 @@
 #include <iostream>
 #include <vector>
 #include "voronoi.hpp"
+#include "event.hpp"
 
 class FortuneAlgorithm
 {
@@ -11,7 +12,8 @@ private:
 
     Voronoi mDiagram;
 
-
+    // Create the eventVector using the wrapper for Event class
+    EventVectorWrapper<Event> priorty_vector;
 public:
 
     Voronoi getDiagram();
