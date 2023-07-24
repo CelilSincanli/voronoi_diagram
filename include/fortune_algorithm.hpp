@@ -20,6 +20,7 @@ public:
     FortuneAlgorithm(std::vector<Voronoi::cartesian_coordinates> points);
     ~FortuneAlgorithm();  
 
+    void handleSiteEvent(Event* event);
     void initialize();
 
 };

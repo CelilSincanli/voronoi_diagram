@@ -6,9 +6,17 @@ Voronoi::Voronoi(const std::vector<cartesian_coordinates>& points)
     mSites.reserve(points.size());
     mFaces.reserve(points.size());
 
-    for(std::size_t point_index = 0; point_index < points.size(); ++point_index)
+    // Make a copy of the points vector
+    std::vector<cartesian_coordinates> sortedPoints = points;
+
+    // Sort the copy of the points vector by the y-coordinate
+    std::sort(sortedPoints.begin(), sortedPoints.end(), [](const cartesian_coordinates& p1, const cartesian_coordinates& p2) {
+        return p1.y < p2.y;
+    });
+
+    for(std::size_t point_index = 0; point_index < sortedPoints.size(); ++point_index)
     {
-        mSites.push_back(Voronoi::Site{point_index, points[point_index], nullptr});
+        mSites.push_back(Voronoi::Site{point_index, sortedPoints[point_index], nullptr});
         mFaces.push_back(Voronoi::Face{&mSites.back(), nullptr});
         mSites.back().face = &mFaces.back();
     }

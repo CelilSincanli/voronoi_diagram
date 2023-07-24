@@ -18,10 +18,16 @@ void FortuneAlgorithm::initialize()
     {
         std::unique_ptr<Event> event = std::move(priorty_vector.elements.back());
         priorty_vector.elements.pop_back();
-
-        // if(event->type == Event::Type::SITE)
+        if(event->type == Event::Type::SITE)
             //TODO handle site event
-        // else
+            ;
+        else 
             //TODO handle circle event
+            ;
     }
+}
+
+void FortuneAlgorithm::handleSiteEvent(Event* event)
+{
+    Voronoi::Site* site = event->site;
 }
