@@ -21,6 +21,8 @@ void FortuneAlgorithm::initialize()
         if(event->type == Event::Type::SITE)
             //TODO handle site event
             ;
+
+            
         else 
             //TODO handle circle event
             ;
@@ -30,4 +32,10 @@ void FortuneAlgorithm::initialize()
 void FortuneAlgorithm::handleSiteEvent(Event* event)
 {
     Voronoi::Site* site = event->site;
+    // 1. Check if the bachline is empty
+    if (mBeachline.isEmpty())
+    {
+        mBeachline.setRoot(mBeachline.createArc(site));
+        return;
+    }
 }

@@ -3,8 +3,10 @@
 
 #include <iostream>
 #include <vector>
+
 #include "voronoi.hpp"
 #include "event.hpp"
+#include "beachline.hpp"
 
 class FortuneAlgorithm
 {
@@ -14,6 +16,9 @@ private:
 
     // Create the eventVector using the wrapper for Event class
     EventVectorWrapper<Event> priorty_vector;
+
+    Beachline mBeachline;
+    
 public:
 
     Voronoi getDiagram();
